@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      life_saving_rules: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string
+          id: string
+          name: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      safety_analyses: {
+        Row: {
+          activity: string
+          barrier_failure: string
+          created_at: string
+          evidence: Json
+          explanation: string
+          hazard: string
+          id: string
+          life_saving_rule: string
+          location: string
+          model: string
+          potential_consequence: string
+          recommended_focus: string
+          report_id: string
+          sif_level: string
+          sif_potential: boolean
+          updated_at: string
+        }
+        Insert: {
+          activity?: string
+          barrier_failure?: string
+          created_at?: string
+          evidence?: Json
+          explanation?: string
+          hazard?: string
+          id?: string
+          life_saving_rule?: string
+          location?: string
+          model?: string
+          potential_consequence?: string
+          recommended_focus?: string
+          report_id: string
+          sif_level?: string
+          sif_potential: boolean
+          updated_at?: string
+        }
+        Update: {
+          activity?: string
+          barrier_failure?: string
+          created_at?: string
+          evidence?: Json
+          explanation?: string
+          hazard?: string
+          id?: string
+          life_saving_rule?: string
+          location?: string
+          model?: string
+          potential_consequence?: string
+          recommended_focus?: string
+          report_id?: string
+          sif_level?: string
+          sif_potential?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "safety_analyses_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: true
+            referencedRelation: "safety_reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      safety_reports: {
+        Row: {
+          activity: string
+          created_at: string
+          department: string
+          description: string
+          id: string
+          report_date: string
+          report_id: string
+          report_type: string
+          site: string
+          updated_at: string
+        }
+        Insert: {
+          activity: string
+          created_at?: string
+          department?: string
+          description: string
+          id?: string
+          report_date: string
+          report_id: string
+          report_type: string
+          site: string
+          updated_at?: string
+        }
+        Update: {
+          activity?: string
+          created_at?: string
+          department?: string
+          description?: string
+          id?: string
+          report_date?: string
+          report_id?: string
+          report_type?: string
+          site?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      safety_reviews: {
+        Row: {
+          classification: string
+          comment: string
+          created_at: string
+          id: string
+          report_id: string
+          reviewed_at: string
+          reviewed_by: string
+        }
+        Insert: {
+          classification: string
+          comment?: string
+          created_at?: string
+          id?: string
+          report_id: string
+          reviewed_at?: string
+          reviewed_by?: string
+        }
+        Update: {
+          classification?: string
+          comment?: string
+          created_at?: string
+          id?: string
+          report_id?: string
+          reviewed_at?: string
+          reviewed_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "safety_reviews_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "safety_reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
