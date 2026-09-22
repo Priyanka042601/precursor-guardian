@@ -53,9 +53,13 @@ export type Database = {
           potential_consequence: string
           recommended_focus: string
           report_id: string
+          review_priority: string
           sif_level: string
           sif_potential: boolean
+          suggested_action: string
+          unsafe_act_condition: string
           updated_at: string
+          why_flagged: string
         }
         Insert: {
           activity?: string
@@ -71,9 +75,13 @@ export type Database = {
           potential_consequence?: string
           recommended_focus?: string
           report_id: string
+          review_priority?: string
           sif_level?: string
           sif_potential: boolean
+          suggested_action?: string
+          unsafe_act_condition?: string
           updated_at?: string
+          why_flagged?: string
         }
         Update: {
           activity?: string
@@ -89,9 +97,13 @@ export type Database = {
           potential_consequence?: string
           recommended_focus?: string
           report_id?: string
+          review_priority?: string
           sif_level?: string
           sif_potential?: boolean
+          suggested_action?: string
+          unsafe_act_condition?: string
           updated_at?: string
+          why_flagged?: string
         }
         Relationships: [
           {
@@ -144,31 +156,40 @@ export type Database = {
       }
       safety_reviews: {
         Row: {
+          assigned_action: string
           classification: string
           comment: string
+          corrected_rule: string
           created_at: string
           id: string
           report_id: string
           reviewed_at: string
           reviewed_by: string
+          status: string
         }
         Insert: {
+          assigned_action?: string
           classification: string
           comment?: string
+          corrected_rule?: string
           created_at?: string
           id?: string
           report_id: string
           reviewed_at?: string
           reviewed_by?: string
+          status?: string
         }
         Update: {
+          assigned_action?: string
           classification?: string
           comment?: string
+          corrected_rule?: string
           created_at?: string
           id?: string
           report_id?: string
           reviewed_at?: string
           reviewed_by?: string
+          status?: string
         }
         Relationships: [
           {
